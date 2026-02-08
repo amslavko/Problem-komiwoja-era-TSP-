@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSP Genetic Algorithm Solver</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧬 Genetic algorithm for TSP</h1>
+            <p>Solving the Traveling Salesman Problem with Visualization</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="dataset">Dataset:</label>
+                <select id="dataset">
+                    <option value="berlin52">Berlin52 (52 cities)</option>
+                    <option value="ch150">CH150 (150 cities)</option>
+                    <option value="d493">D493 (493 citites)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="populationSize">Population size:</label>
+                <input type="number" id="populationSize" value="100" min="10" max="500">
+            </div>
+
+            <div class="control-group">
+                <label for="generations">Generations:</label>
+                <input type="number" id="generations" value="500" min="10" max="5000">
+            </div>
+
+            <div class="control-group">
+                <label for="mutationRate">Mutation (%):</label>
+                <input type="number" id="mutationRate" value="2" min="0" max="100" step="0.1">
+            </div>
+
+            <div class="control-group">
+                <label for="eliteSize">Elitizm:</label>
+                <input type="number" id="eliteSize" value="10" min="0" max="50">
+            </div>
+
+            <button id="startBtn" class="btn-primary">▶ Start</button>
+            <button id="stopBtn" class="btn-secondary" disabled>⏸ Stop</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Best distance</h3>
+                <p id="bestDistance">-</p>
+            </div>
+            <div class="stat-card">
+                <h3>Generations</h3>
+                <p id="currentGen">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Time spent</h3>
+                <p id="executionTime">0 ms</p>
+            </div>
+            <div class="stat-card">
+                <h3>Improvements</h3>
+                <p id="improvements">0</p>
+            </div>
+        </div>
+
+        <div class="visualization">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <div class="progress">
+            <h3>Optimization progress</h3>
+            <canvas id="progressChart"></canvas>
+        </div>
+
+        <div class="benchmark">
+            <h3>📊 Benchmark results</h3>
+            <div id="benchmarkResults"></div>
+        </div>
+    </div>
+
+    <script src="js/genetic-ops.js"></script>
+    <script src="js/tsp-solver.js"></script>
+    <script src="js/visualizer.js"></script>
+    <script src="js/benchmark.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
